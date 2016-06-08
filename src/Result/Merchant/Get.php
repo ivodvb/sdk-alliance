@@ -21,7 +21,7 @@ class Get extends Merchant
         return $this->data['documents'];
     }
 
-    public function getPackageName()
+    public function getPackageType()
     {
         return $this->data['packageType'];
     }

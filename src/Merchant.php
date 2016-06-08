@@ -55,7 +55,7 @@ class Merchant
      *      'bankAccountNumber' => 'NL91ABNA0417164300',
      *      'bankAccountBIC' => 'ABNANL2A',
      *      'vatNumber' => 'NL123412413',
-     *      'packageName' => 'Alliance', // Alliance or AlliancePlus
+     *      'packageType' => 'Alliance', // Alliance or AlliancePlus
      *
      *      Set to true if you want to be able to add a debit invoice to the account of this merchant.
      *      Your invoice will be subtracted from the merchants account.
@@ -110,8 +110,8 @@ class Merchant
         if (isset($options['bankAccountBIC'])) {
             $api->setBankAccountBic($options['bankAccountBIC']);
         }
-        if (isset($options['packageName'])) {
-            $api->setPackageName($options['packageName']);
+        if (isset($options['packageType'])) {
+            $api->setPackageType($options['packageType']);
         }
         if (isset($options['settleBalance'])) {
             $api->setSettleBalance($options['settleBalance']);

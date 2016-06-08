@@ -74,7 +74,7 @@ class AddMerchant extends Api
     /**
      * @var string Alliance or AlliancePlus
      */
-    private $_packageName;
+    private $_packageType;
     /*
      * Main account data
      */
@@ -241,11 +241,11 @@ class AddMerchant extends Api
     }
 
     /**
-     * @param string $packageName
+     * @param string $packageType
      */
-    public function setPackageName($packageName)
+    public function setPackageType($packageType)
     {
-        $this->_packageName = $packageName;
+        $this->_packageType = $packageType;
     }
 
     /**
@@ -454,8 +454,8 @@ class AddMerchant extends Api
         if (!empty($this->_signees)) {
             $this->data['signees'] = $this->_signees;
         }
-        if (isset($this->_packageName)) {
-            $this->data['packageName'] = $this->_packageName;
+        if (isset($this->_packageType)) {
+            $this->data['packageType'] = $this->_packageType;
         }
         if (isset($this->_settleBalance)) {
             $this->data['settleBalance'] = (bool)$this->_settleBalance;

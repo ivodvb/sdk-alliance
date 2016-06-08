@@ -23,9 +23,9 @@ class Merchant extends Result
         return $this->data['merchantName'];
     }
 
-    public function getPackageName()
+    public function getPackageType()
     {
-        return $this->data['packageName'];
+        return $this->data['packageType'];
     }
 
     public function getInvoiceAllowed()

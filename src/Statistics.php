@@ -15,16 +15,16 @@ class Statistics
     {
         $api = new Api\Statistics();
 
-        if(isset($options['period'])){
+        if (isset($options['period'])) {
             $period = self::getPeriod($options['period']);
             $api->setStartDate($period[0]);
             $api->setEndDate($period[1]);
         }
 
-        if(isset($options['startDate'])){
+        if (isset($options['startDate'])) {
             $api->setStartDate($options['startDate']);
         }
-        if(isset($options['endDate'])){
+        if (isset($options['endDate'])) {
             $api->setEndDate($options['endDate']);
         }
         $result = $api->doRequest();
@@ -33,7 +33,6 @@ class Statistics
 
         return $data;
     }
-
 
     private static function getPeriod($period)
     {
@@ -60,8 +59,10 @@ class Statistics
                 throw new Error('Invalid period');
                 break;
         }
+
         return array(
-            $startDate, $endDate
+            $startDate,
+            $endDate,
         );
     }
 }

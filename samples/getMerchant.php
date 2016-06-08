@@ -7,7 +7,7 @@ try {
 
     // documents that still need to be uploaded
     $documents = $merchant->getMissingDocuments();
-    foreach($documents as $document){
+    foreach ($documents as $document) {
         var_dump($document);
     }
 
@@ -15,6 +15,6 @@ try {
 
     var_dump($data);
 } catch (Exception $e) {
-    echo "Error occurred: " . $e->getMessage();
+    echo "Error occurred: ".$e->getMessage();
 }
 

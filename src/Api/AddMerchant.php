@@ -215,6 +215,8 @@ class AddMerchant extends Api
 
     /**
      * @param string $countryCode
+     *
+     * @throws Error
      */
     public function setCountryCode($countryCode)
     {
@@ -251,6 +253,8 @@ class AddMerchant extends Api
 
     /**
      * @param string $invoiceInterval
+     *
+     * @throws Error
      */
     public function setInvoiceInterval($invoiceInterval)
     {
@@ -528,7 +532,7 @@ class AddMerchant extends Api
      *
      * @throws Error
      */
-    public function doRequest($endpoint, $version = null)
+    public function doRequest($endpoint = null, $version = null)
     {
         return parent::doRequest('alliance/addMerchant');
     }

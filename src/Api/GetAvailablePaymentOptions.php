@@ -8,7 +8,6 @@
 
 namespace Paynl\Alliance\Api;
 
-
 use Paynl\Error\Api as ApiError;
 use Paynl\Error\Required;
 use Paynl\Helper;
@@ -19,6 +18,9 @@ class GetAvailablePaymentOptions extends Api
 
     protected $serviceId = null;
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processResult($result)
     {
         $output = Helper::objectToArray($result);
@@ -26,6 +28,7 @@ class GetAvailablePaymentOptions extends Api
         if (!is_array($output)) {
             throw new ApiError($output);
         }
+
         return $output;
     }
 
@@ -33,9 +36,13 @@ class GetAvailablePaymentOptions extends Api
     {
         $this->serviceId = $serviceId;
     }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getData()
     {
-        if(!isset($this->serviceId)){
+        if (!isset($this->serviceId)) {
             throw new Required('serviceId');
         }
         $this->data['serviceId'] = $this->serviceId;
@@ -43,6 +50,9 @@ class GetAvailablePaymentOptions extends Api
         return parent::getData();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function doRequest($endpoint = null, $version = null)
     {
         return parent::doRequest('service/getAvailablePaymentOptions');

@@ -8,7 +8,6 @@
 
 namespace Paynl\Alliance\Api;
 
-
 use Paynl\Error\Api as ApiError;
 use Paynl\Helper;
 
@@ -16,6 +15,9 @@ class GetCategories extends Api
 {
     protected $version = 1;
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processResult($result)
     {
         $output = Helper::objectToArray($result);
@@ -23,9 +25,13 @@ class GetCategories extends Api
         if (!is_array($output)) {
             throw new ApiError($output);
         }
+
         return $output;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function doRequest($endpoint = null, $version = null)
     {
         return parent::doRequest('service/getCategories');

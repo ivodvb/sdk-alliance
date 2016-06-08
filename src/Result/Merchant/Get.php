@@ -8,24 +8,40 @@
 
 namespace Paynl\Alliance\Result\Merchant;
 
-
+/**
+ * Class Get
+ *
+ * @package Paynl\Alliance\Result\Merchant
+ */
 class Get extends Merchant
 {
+    /**
+     * @return float
+     */
     public function getBalance()
     {
         return $this->data['balance'] / 100;
     }
 
+    /**
+     * @return array
+     */
     public function getDocuments()
     {
         return $this->data['documents'];
     }
 
+    /**
+     * @return array
+     */
     public function getPackageType()
     {
         return $this->data['packageType'];
     }
 
+    /**
+     * @return array
+     */
     public function getMissingDocuments()
     {
         $result = array();
@@ -40,9 +56,11 @@ class Get extends Merchant
         return $result;
     }
 
+    /**
+     * @return array
+     */
     public function getAccounts()
     {
         return $this->data['accounts'];
     }
-
 }

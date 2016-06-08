@@ -8,7 +8,6 @@
 
 namespace Paynl\Alliance\Api;
 
-
 use Paynl\Error;
 use Paynl\Helper;
 
@@ -27,6 +26,9 @@ class GetMerchant extends Api
         $this->_merchantId = $merchantId;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getData()
     {
         if (!isset($this->_merchantId)) {
@@ -38,6 +40,9 @@ class GetMerchant extends Api
         return parent::getData();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processResult($result)
     {
         $output = Helper::objectToArray($result);
@@ -49,6 +54,9 @@ class GetMerchant extends Api
         return parent::processResult($result);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function doRequest($endpoint = null, $version = null)
     {
         return parent::doRequest('alliance/getMerchant');

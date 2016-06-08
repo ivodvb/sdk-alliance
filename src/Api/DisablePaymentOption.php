@@ -8,7 +8,6 @@
 
 namespace Paynl\Alliance\Api;
 
-
 use Paynl\Error\Api as ApiError;
 use Paynl\Error\Required;
 use Paynl\Helper;
@@ -21,6 +20,9 @@ class DisablePaymentOption extends Api
     protected $paymentProfileId = null;
     protected $settings = null;
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processResult($result)
     {
         $output = Helper::objectToArray($result);
@@ -28,6 +30,7 @@ class DisablePaymentOption extends Api
         if (!is_array($output)) {
             throw new ApiError($output);
         }
+
         return $output;
     }
 
@@ -41,6 +44,9 @@ class DisablePaymentOption extends Api
         $this->paymentProfileId = $paymentProfileId;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getData()
     {
         if (!isset($this->serviceId)) {
@@ -56,6 +62,9 @@ class DisablePaymentOption extends Api
         return parent::getData();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function doRequest($endpoint = null, $version = null)
     {
         return parent::doRequest('service/disablePaymentOption');

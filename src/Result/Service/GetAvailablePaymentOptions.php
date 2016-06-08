@@ -8,9 +8,11 @@
 
 namespace Paynl\Alliance\Result\Service;
 
-
 use Paynl\Result\Result;
 
+/**
+ * {@inheritDoc}
+ */
 class GetAvailablePaymentOptions extends Result
 {
 

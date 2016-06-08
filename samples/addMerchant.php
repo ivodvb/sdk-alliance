@@ -6,46 +6,46 @@ try {
     $result = \Paynl\Alliance\Merchant::add(
         array(
             // Required
-            'companyName' => 'allianceAddTest',
-            'cocNumber' => '54212455',
-            'street' => 'Kopersteden',
-            'houseNumber' => '10',
-            'postalCode' => '7547 TK',
-            'city' => 'Enschede',
-            'accounts' => array(
+            'companyName'       => 'allianceAddTest',
+            'cocNumber'         => '54212455',
+            'street'            => 'Kopersteden',
+            'houseNumber'       => '10',
+            'postalCode'        => '7547 TK',
+            'city'              => 'Enschede',
+            'accounts'          => array(
                 // Minimum of 1 account, you can add more, one account must be primary, the other accounts cannot be primary
                 array(
-                    'primary' => true,
+                    'primary'          => true,
                     // One account must be primary
-                    'email' => 'email@test.nl',
-                    'firstname' => 'Andy',
-                    'lastname' => 'Pieters',
-                    'gender' => 'male',
+                    'email'            => 'email@test.nl',
+                    'firstname'        => 'Andy',
+                    'lastname'         => 'Pieters',
+                    'gender'           => 'male',
                     'authorisedToSign' => 2,
                     //0 not authorised, 1 authorised independently, 2  shared authority to sign
-                    'ubo' => true,
+                    'ubo'              => true,
                     // Ultimate beneficial owner (25% of more shares)
                 ),
                 array(
-                    'primary' => false,
-                    'email' => 'email2@test.nl',
-                    'firstname' => 'Mede',
-                    'lastname' => 'Eigenaar',
-                    'gender' => 'female',
+                    'primary'          => false,
+                    'email'            => 'email2@test.nl',
+                    'firstname'        => 'Mede',
+                    'lastname'         => 'Eigenaar',
+                    'gender'           => 'female',
                     'authorisedToSign' => 2,
                     //0 not authorised, 1 authorised independently, 2  shared authority to sign
-                    'ubo' => true,
+                    'ubo'              => true,
                     // Ultimate beneficial owner (25% of more shares)
                 ),
                 array(
-                    'primary' => false,
-                    'email' => 'email4@test.nl',
-                    'firstname' => 'Mede',
-                    'lastname' => 'Eigenaar',
-                    'gender' => 'female',
+                    'primary'          => false,
+                    'email'            => 'email4@test.nl',
+                    'firstname'        => 'Mede',
+                    'lastname'         => 'Eigenaar',
+                    'gender'           => 'female',
                     'authorisedToSign' => 2,
                     //0 not authorised, 1 authorised independently, 2 shared authority to sign
-                    'ubo' => true,
+                    'ubo'              => true,
                     // Ultimate beneficial owner (25% of more shares)
                 ),
             ),
@@ -59,13 +59,13 @@ try {
              * 1 - The default registration email is sent
              * 2 - The shortened alliance registration email is sent
              */
-            'sendEmail' => 1, // see above
-            'countryCode' => 'NL',
-            'bankAccountOwner' => 'Andy Pieters',
+            'sendEmail'         => 1, // see above
+            'countryCode'       => 'NL',
+            'bankAccountOwner'  => 'Andy Pieters',
             'bankAccountNumber' => 'NL91ABNA0417164300',
-            'bankAccountBIC' => 'ABNANL2A',
-            'vatNumber' => 'NL123412413',
-            'packageName' => 'Alliance', // Alliance or AlliancePlus
+            'bankAccountBIC'    => 'ABNANL2A',
+            'vatNumber'         => 'NL123412413',
+            'packageName'       => 'Alliance', // Alliance or AlliancePlus
 
             /*
              * Set to true if you want to be able to debit the balance of this merchant.
@@ -74,12 +74,12 @@ try {
              * This also adds an extra line in the generated contract, granting permission to access the balance
              * and granting access to the Submerchant's account and statistics
              */
-            'settleBalance' => false, // see above
-            'payoutInterval' => 'week' //day, week or month
+            'settleBalance'     => false, // see above
+            'payoutInterval'    => 'week' //day, week or month
         )
     );
 
     echo $result->getMerchantId();
 } catch (Exception $e) {
-    echo "Error occurred: " . $e->getMessage();
+    echo "Error occurred: ".$e->getMessage();
 }

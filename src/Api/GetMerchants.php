@@ -25,6 +25,8 @@ class GetMerchants extends Api
 
     /**
      * @param string $state
+     *
+     * @throws Error\Error
      */
     public function setState($state)
     {
@@ -47,7 +49,7 @@ class GetMerchants extends Api
     }
 
     /**
-     * @param $result
+     * @param object $result
      *
      * @return array
      *

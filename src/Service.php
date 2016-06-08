@@ -8,10 +8,8 @@
 
 namespace Paynl\Alliance;
 
-
 use Paynl\Alliance\Api;
 use Paynl\Error\Required;
-
 
 class Service
 {
@@ -52,10 +50,9 @@ class Service
     /**
      * Get website categories
      *
-     * @param array $options
      * @return Result\Service\GetCategories
      */
-    public static function getCategories($options = array())
+    public static function getCategories()
     {
         $api = new Api\GetCategories();
         $result = $api->doRequest();
@@ -67,7 +64,9 @@ class Service
      * get a list of available payment methods
      *
      * @param array $options
+     *
      * @return Result\Service\GetAvailablePaymentOptions
+     * 
      * @throws Required
      */
     public static function getAvailablePaymentMethods($options = array())
@@ -89,6 +88,7 @@ class Service
      * Enable a payment method
      *
      * @param array $options
+     *
      * @return bool
      * @throws Required
      */
@@ -106,11 +106,12 @@ class Service
         } else {
             $api->setPaymentProfileId($options['paymentMethodId']);
         }
-        if(isset($options['settings'])){
+        if (isset($options['settings'])) {
             $api->setSettings($options['settings']);
         }
 
         $result = $api->doRequest();
+
         return $result['request']['result'] == 1;
     }
 
@@ -118,6 +119,7 @@ class Service
      * Disable a payment method
      *
      * @param array $options
+     *
      * @return bool
      * @throws Required
      */
@@ -135,7 +137,6 @@ class Service
         } else {
             $api->setPaymentProfileId($options['paymentMethodId']);
         }
-
 
         $result = $api->doRequest();
 

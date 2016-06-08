@@ -5,19 +5,19 @@ require_once 'config.php';
 try {
 
     $success = Paynl\Alliance\Service::enablePaymentMethod(array(
-        'serviceId' => 'SL-2820-5610',
+        'serviceId'       => 'SL-2820-5610',
         'paymentMethodId' => 739,
-        'settings' => array(
-            'merchantId' => 1234,
+        'settings'        => array(
+            'merchantId'       => 1234,
             'merchantPassword' => 'p4ssw0rd',
-            'portefeuilleId' => '2'
-        )
+            'portefeuilleId'   => '2',
+        ),
     ));
 
-    if($success){
+    if ($success) {
         // enabling succeeded
     }
 } catch (Exception $e) {
-    echo "Error occurred: " . $e->getMessage();
+    echo "Error occurred: ".$e->getMessage();
 }
 

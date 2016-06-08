@@ -2,15 +2,14 @@
 
 namespace Paynl\Alliance\Api;
 
-use Paynl\Error\Api as ApiError;
-use Paynl\Helper;
-
+/**
+ * {@inheritDoc}
+ */
 class Api extends \Paynl\Api\Api
 {
     protected $apiTokenRequired = true;
     protected $serviceIdRequired = false;
 
     protected $version = 2;
-
 
 }

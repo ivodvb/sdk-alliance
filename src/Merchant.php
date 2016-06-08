@@ -1,14 +1,17 @@
 <?php
 
-
 namespace Paynl\Alliance;
 
 use Paynl\Error\Error;
 use Paynl\Error\Required;
 
+/**
+ * Class Merchant
+ *
+ * @package Paynl\Alliance
+ */
 class Merchant
 {
-
     /**
      * Add a merchant
      *
@@ -23,15 +26,17 @@ class Merchant
      *      'postalCode' => '1234 AA',
      *      'city' => 'City',
      *      'accounts' => array(
-     *          // Minimum of 1 account, you can add more, one account must be primary, the other accounts cannot be primary
-     *          array(
+     *          // Minimum of 1 account, you can add more, one account must be
+     *          primary, the other accounts cannot be primary array(
      *              'primary' => true, // One account must be primary
      *              'email' => 'email@test.nl',
      *              'firstname' => 'First',
      *              'lastname' => 'Last',
      *              'gender' => 'male', // 'male' or 'female'
-     *              'authorisedToSign' => 2, //0 not authorised, 1 authorised independently, 2  shared authorized to sign
-     *              'ubo' => true, // Ultimate beneficial owner (25% of more shares)
+     *              'authorisedToSign' => 2, //0 not authorised, 1 authorised
+     *              independently, 2  shared authorized to sign
+     *              'ubo' => true, // Ultimate beneficial owner (25% of more
+     *              shares)
      *          ),
      *          array(
      *              'primary' => false,
@@ -39,8 +44,10 @@ class Merchant
      *              'firstname' => 'Mede',
      *              'lastname' => 'Eigenaar',
      *              'gender' => 'female', // 'male' or 'female'
-     *              'authorisedToSign' => 2, //0 not authorised, 1 authorised independently, 2  shared authorized to sign
-     *              'ubo' => true, // Ultimate beneficial owner (25% of more shares)
+     *              'authorisedToSign' => 2, //0 not authorised, 1 authorised
+     *              independently, 2  shared authorized to sign
+     *              'ubo' => true, // Ultimate beneficial owner (25% of more
+     *              shares)
      *          )
      *       ),
      *      // Optional
@@ -57,14 +64,16 @@ class Merchant
      *      'vatNumber' => 'NL123412413',
      *      'packageType' => 'Alliance', // Alliance or AlliancePlus
      *
-     *      Set to true if you want to be able to add a debit invoice to the account of this merchant.
-     *      Your invoice will be subtracted from the merchants account.
-     *      You will need to ask the merchant for permission before you can set this value to true
+     *      Set to true if you want to be able to add a debit invoice to the
+     *      account of this merchant. Your invoice will be subtracted from the
+     *      merchants account. You will need to ask the merchant for permission
+     *      before you can set this value to true
      *      'settleBalance' => false, // see above
      *      'payoutInterval' => 'week' //day, week or month
      *  )
      *
      * @param array $options see Description
+     *
      * @return Result\Merchant\Add
      * @throws Error
      * @throws Required
@@ -127,8 +136,9 @@ class Merchant
     /**
      * Add the accounts to the addMerchant API
      *
-     * @param array $accounts
+     * @param array           $accounts
      * @param Api\AddMerchant $api
+     *
      * @throws Error
      * @throws Required
      */
@@ -194,14 +204,16 @@ class Merchant
                 if (empty($signee['ubo'])) {
                     $signee['ubo'] = 0;
                 }
-                $api->addSignee($signee['email'], $signee['firstname'], $signee['lastname'],
+                $api->addSignee($signee['email'], $signee['firstname'],
+                    $signee['lastname'],
                     $signee['authorisedToSign'], $signee['ubo']);
             }
         }
     }
 
     /**
-     * @param $options
+     * @param array $options
+     *
      * @return Result\Merchant\Get
      */
     public static function get($options)
@@ -216,6 +228,12 @@ class Merchant
         return new Result\Merchant\Get($result);
     }
 
+    /**
+     * @param array $options
+     *
+     * @return Result\Merchant\GetList
+     * @throws Error
+     */
     public static function getList($options = array())
     {
         $api = new Api\GetMerchants();

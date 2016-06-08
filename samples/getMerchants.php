@@ -8,8 +8,8 @@ try {
     $merchants = $result->getMerchants();
 
     foreach ($merchants as $merchant) {
-        echo $merchant->getMerchantId() . ' ' . $merchant->getMerchantName() . "<br />";
+        echo $merchant->getMerchantId().' '.$merchant->getMerchantName()."<br />";
     }
 } catch (Exception $e) {
-    echo "Error occurred: " . $e->getMessage();
+    echo "Error occurred: ".$e->getMessage();
 }

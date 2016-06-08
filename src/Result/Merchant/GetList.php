@@ -8,9 +8,13 @@
 
 namespace Paynl\Alliance\Result\Merchant;
 
-
 use Paynl\Result\Result;
 
+/**
+ * Class GetList
+ *
+ * @package Paynl\Alliance\Result\Merchant
+ */
 class GetList extends Result
 {
     /**
@@ -23,6 +27,7 @@ class GetList extends Result
             $merchant = new Merchant($arrMerchant);
             array_push($arrResult, $merchant);
         }
+
         return $arrResult;
     }
 }

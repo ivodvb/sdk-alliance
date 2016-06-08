@@ -8,7 +8,6 @@
 
 namespace Paynl\Alliance\Api;
 
-
 use Paynl\Error\Required;
 
 class AddInvoice extends Api
@@ -39,7 +38,8 @@ class AddInvoice extends Api
      */
     protected $invoiceUrl;
     /**
-     * @var boolean Whether the transaction should be backdated to yesterday 23:59:59
+     * @var boolean Whether the transaction should be backdated to yesterday
+     *      23:59:59
      */
     protected $makeYesterday;
 
@@ -91,44 +91,49 @@ class AddInvoice extends Api
         $this->makeYesterday = $makeYesterday;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getData()
     {
-        if(empty($this->merchantId)){
+        if (empty($this->merchantId)) {
             throw new Required('merchantId');
         } else {
             $this->data['merchantId'] = $this->merchantId;
         }
 
-        if(empty($this->invoiceId)){
+        if (empty($this->invoiceId)) {
             throw new Required('invoiceId');
         } else {
             $this->data['invoiceId'] = $this->invoiceId;
         }
 
-        if(empty($this->amount)){
+        if (empty($this->amount)) {
             throw new Required('amount');
         } else {
             $this->data['amount'] = $this->amount;
         }
 
-        if(empty($this->description)){
+        if (empty($this->description)) {
             throw new Required('description');
         } else {
             $this->data['description'] = $this->description;
         }
 
-        if(isset($this->invoiceUrl)){
+        if (isset($this->invoiceUrl)) {
             $this->data['invoiceUrl'] = $this->invoiceUrl;
         }
 
-        if(isset($this->makeYesterday)){
+        if (isset($this->makeYesterday)) {
             $this->data['makeYesterday'] = (bool)$this->makeYesterday;
         }
 
         return parent::getData();
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     public function doRequest($endpoint = null, $version = null)
     {
         return parent::doRequest('Alliance/addInvoice');

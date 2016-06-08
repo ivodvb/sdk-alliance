@@ -20,12 +20,12 @@ try {
      * \Paynl\Alliance\Statistics::PERIOD_LAST_MONTH
      */
     $result = Paynl\Alliance\Statistics::getStats(array(
-        'period' => \Paynl\Alliance\Statistics::PERIOD_LAST_WEEK
+        'period' => \Paynl\Alliance\Statistics::PERIOD_LAST_WEEK,
     ));
 
     $data = $result->getData();
 
     var_dump($data);
 } catch (Exception $e) {
-    echo "Error occurred: " . $e->getMessage();
+    echo "Error occurred: ".$e->getMessage();
 }

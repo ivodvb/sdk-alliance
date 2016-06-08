@@ -8,9 +8,9 @@
 
 namespace Paynl\Alliance\Api;
 
-
 use Paynl\Error\Required;
 use Paynl\Error;
+use Paynl\Helper;
 
 class Statistics extends Api
 {
@@ -43,22 +43,23 @@ class Statistics extends Api
         $this->endDate = $endDate;
     }
 
-
-
+    /**
+     * {@inheritDoc}
+     */
     protected function getData()
     {
         $this->data['groupBy'] = array(
             'company_id',
-            'payment_profile_id'
+            'payment_profile_id',
         );
 
-        if(!isset($this->startDate)){
+        if (!isset($this->startDate)) {
             throw new Required('startDate');
         } else {
             $this->data['startDate'] = $this->startDate->format('Y-m-d');
         }
 
-        if(!isset($this->endDate)){
+        if (!isset($this->endDate)) {
             throw new Required('endDate');
         } else {
             $this->data['endDate'] = $this->endDate->format('Y-m-d');
@@ -67,17 +68,23 @@ class Statistics extends Api
         return parent::getData();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processResult($result)
     {
-        $output = \Paynl\Helper::objectToArray($result);
+        $output = Helper::objectToArray($result);
 
-        if(!is_array($output)){
+        if (!is_array($output)) {
             throw new Error\Api($output);
         }
 
         return $output;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function doRequest($endpoint = null, $version = null)
     {
         return parent::doRequest('Statistics/management');

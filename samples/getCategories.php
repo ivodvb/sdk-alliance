@@ -8,6 +8,6 @@ try {
 
     var_dump($data);
 } catch (Exception $e) {
-    echo "Error occurred: " . $e->getMessage();
+    echo "Error occurred: ".$e->getMessage();
 }
 

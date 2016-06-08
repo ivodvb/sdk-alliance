@@ -8,7 +8,6 @@
 
 namespace Paynl\Alliance\Api;
 
-
 use Paynl\Error\Required;
 use Paynl\Error\Api as ApiError;
 use Paynl\Helper;
@@ -54,6 +53,9 @@ class AddDocument extends Api
         $this->_content[] = $content;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function getData()
     {
         if (!isset($this->_filename)) {
@@ -69,7 +71,7 @@ class AddDocument extends Api
         if (!isset($this->_content) && !empty($this->_content)) {
             throw new Required('content');
         }
-        if(count($this->_content) == 1){
+        if (count($this->_content) == 1) {
             $this->data['documentFile'] = $this->_content[0];
         } else {
             $this->data['documentFile'] = $this->_content;
@@ -78,6 +80,9 @@ class AddDocument extends Api
         return parent::getData();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected function processResult($result)
     {
 
@@ -85,12 +90,15 @@ class AddDocument extends Api
 
         // errors are returned different in this api
         if (isset($output['result']) && $output['result'] == 0) {
-            throw new ApiError($output['errorId'] . ' - ' . $output['errorMessage']);
+            throw new ApiError($output['errorId'].' - '.$output['errorMessage']);
         }
 
         return $output;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function doRequest($endpoint = null, $version = null)
     {
         return parent::doRequest('document/add');

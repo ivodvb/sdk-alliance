@@ -67,7 +67,7 @@ class AddMerchant extends Api
 
     /**
      *
-     * @var sting day, week or month
+     * @var string day, week or month
      */
     private $_invoiceInterval;
 
@@ -229,7 +229,7 @@ class AddMerchant extends Api
     }
 
     /**
-     * @param sting $invoiceInterval
+     * @param string $invoiceInterval
      */
     public function setInvoiceInterval($invoiceInterval)
     {

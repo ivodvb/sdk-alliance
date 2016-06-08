@@ -15,7 +15,7 @@ use Paynl\Helper;
 class GetMerchant extends Api
 {
     /**
-     * @var sting
+     * @var string
      */
     private $_merchantId;
 

@@ -15,13 +15,13 @@ use Paynl\Helper;
 class GetMerchants extends Api
 {
     /**
-     * @var sting new, accepted or deleted
+     * @var string new, accepted or deleted
      */
     private $_state;
 
 
     /**
-     * @param sting $state
+     * @param string $state
      */
     public function setState($state)
     {

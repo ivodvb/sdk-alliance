@@ -65,11 +65,14 @@ class GetMerchants extends Api
     }
 
     /**
+     * @param string      $endpoint
+     * @param string|null $version
+     *
      * @return array
      *
      * @throws Error\Error
      */
-    public function doRequest()
+    public function doRequest($endpoint, $version = null)
     {
         return parent::doRequest('alliance/getMerchants');
     }

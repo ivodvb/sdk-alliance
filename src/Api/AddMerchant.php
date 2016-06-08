@@ -2,47 +2,56 @@
 
 namespace Paynl\Alliance\Api;
 
-
+use Paynl\Error\Api as ApiError;
 use Paynl\Error\Error;
 use Paynl\Error\Required;
-
-use Paynl\Error\Api as ApiError;
 use Paynl\Helper;
 
+/**
+ * Class AddMerchant
+ *
+ * @package Paynl\Alliance\Api
+ */
 class AddMerchant extends Api
 {
     /*
      * Company data
      */
-
     /**
      * @var string
      */
     private $_cocNumber;
+
     /**
      * @var string
      */
     private $_vatNumber;
+
     /**
      * @var string
      */
     private $_companyName;
+
     /**
      * @var string
      */
     private $_street;
+
     /**
      * @var string
      */
     private $_houseNumber;
+
     /**
      * @var string
      */
     private $_postalCode;
+
     /**
      * @var string
      */
     private $_city;
+
     /**
      * @var string
      */
@@ -51,15 +60,16 @@ class AddMerchant extends Api
     /*
      * Bank account data
      */
-
     /**
      * @var string
      */
     private $_bankAccountOwner;
+
     /**
      * @var string
      */
     private $_bankAccountNumber;
+
     /**
      * @var string
      */
@@ -75,6 +85,7 @@ class AddMerchant extends Api
      * @var string Alliance or AlliancePlus
      */
     private $_packageType;
+
     /*
      * Main account data
      */
@@ -82,40 +93,48 @@ class AddMerchant extends Api
      * @var string
      */
     private $_email;
+
     /**
      * @var string
      */
     private $_firstName;
+
     /**
      * @var string
      */
     private $_lastName;
+
     /**
      * @var string 'male' or 'female'
      */
     private $_gender;
+
     /**
      * @var int
      */
     private $_languageId = 1;
+
     /**
      * @var bool
      */
     private $_authorisedToSign;
+
     /**
      * @var bool
      */
     private $_ubo;
 
     /**
-     * @var int 0 : No e-mail, 1 : Regular registration e-mail, 2: Short registration e-mail
+     * @var int 0 : No e-mail, 1 : Regular registration e-mail, 2: Short
+     *      registration e-mail
      */
     private $_sendEmail;
 
     /**
-     * Set to true if you want to be able to add a debit invoice to the account of this merchant.
-     * Your invoice will be subtracted from the merchants account.
-     * You will need to ask the merchant for permission before you can set this value to true
+     * Set to true if you want to be able to add a debit invoice to the account
+     * of this merchant. Your invoice will be subtracted from the merchants
+     * account. You will need to ask the merchant for permission before you can
+     * set this value to true
      *
      * @var bool
      */
@@ -125,12 +144,14 @@ class AddMerchant extends Api
      * @var bool
      */
     private $_useCompanyAuth = true;
+
     /**
      * Array of signees, use the following format:
      * ['email']
      * ['firstname']
      * ['lastname']
-     * ['authorised_to_sign'] 0: not authorised, 1:authorized to sign independently, 2: shared authorized to sign
+     * ['authorised_to_sign'] 0: not authorised, 1:authorized to sign
+     * independently, 2: shared authorized to sign
      *
      * @var array Signees
      */
@@ -278,7 +299,6 @@ class AddMerchant extends Api
     public function setGender($gender)
     {
         if (!in_array($gender, array('male', 'female'))) {
-
         }
         $this->_gender = $gender;
     }
@@ -336,25 +356,36 @@ class AddMerchant extends Api
      * @param string $email
      * @param string $firstname
      * @param string $lastname
-     * @param int $authorised_to_sign
-     * @param bool $ubo
+     * @param int    $authorised_to_sign
+     * @param bool   $ubo
+     *
      * @throws Error
      */
-    public function addSignee($email, $firstname, $lastname, $authorised_to_sign, $ubo)
-    {
+    public function addSignee(
+        $email,
+        $firstname,
+        $lastname,
+        $authorised_to_sign,
+        $ubo
+    ) {
         if (!in_array($authorised_to_sign, array(0, 1, 2))) {
             throw new Error('authorised_to_sign can be 0, 1 or 2');
         }
         $signee = array(
-            'email' => $email,
-            'firstname' => $firstname,
-            'lastname' => $lastname,
+            'email'              => $email,
+            'firstname'          => $firstname,
+            'lastname'           => $lastname,
             'authorised_to_sign' => $authorised_to_sign,
-            'ubo' => $ubo //TODO: hier wordt nu nog niets mee gedaan
+            'ubo'                => $ubo
+            //TODO: hier wordt nu nog niets mee gedaan
         );
         $this->_signees[] = $signee;
     }
 
+    /**
+     * @return array
+     * @throws Required
+     */
     protected function getData()
     {
         if (isset($this->_email)) {
@@ -464,6 +495,13 @@ class AddMerchant extends Api
         return parent::getData();
     }
 
+    /**
+     * @param object $result
+     *
+     * @return array
+     *
+     * @throws ApiError
+     */
     protected function processResult($result)
     {
         $output = Helper::objectToArray($result);
@@ -476,14 +514,19 @@ class AddMerchant extends Api
 
         // errors are returned different in this api
         if ($output['success'] != 1) {
-            throw new ApiError($output['error_field'] . ' - ' . $output['error_message']);
+            throw new ApiError($output['error_field'].' - '.$output['error_message']);
         }
+
         return $output;
     }
 
-    public function doRequest($endpoint = null, $version = null)
+    /**
+     * @return array
+     *
+     * @throws Error
+     */
+    public function doRequest()
     {
         return parent::doRequest('alliance/addMerchant');
     }
-
 }

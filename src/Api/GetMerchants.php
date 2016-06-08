@@ -8,17 +8,20 @@
 
 namespace Paynl\Alliance\Api;
 
-
 use Paynl\Error;
 use Paynl\Helper;
 
+/**
+ * Class GetMerchants
+ *
+ * @package Paynl\Alliance\Api
+ */
 class GetMerchants extends Api
 {
     /**
      * @var string new, accepted or deleted
      */
     private $_state;
-
 
     /**
      * @param string $state
@@ -31,7 +34,9 @@ class GetMerchants extends Api
         $this->_state = $state;
     }
 
-
+    /**
+     * @return array
+     */
     protected function getData()
     {
         if (isset($this->_state)) {
@@ -41,6 +46,13 @@ class GetMerchants extends Api
         return parent::getData();
     }
 
+    /**
+     * @param $result
+     *
+     * @return array
+     *
+     * @throws Error\Api
+     */
     protected function processResult($result)
     {
         $output = Helper::objectToArray($result);
@@ -52,7 +64,12 @@ class GetMerchants extends Api
         return $output;
     }
 
-    public function doRequest($endpoint = null, $version = null)
+    /**
+     * @return array
+     *
+     * @throws Error\Error
+     */
+    public function doRequest()
     {
         return parent::doRequest('alliance/getMerchants');
     }

@@ -72,7 +72,7 @@ class GetMerchants extends Api
      *
      * @throws Error\Error
      */
-    public function doRequest($endpoint, $version = null)
+    public function doRequest($endpoint = null, $version = null)
     {
         return parent::doRequest('alliance/getMerchants');
     }

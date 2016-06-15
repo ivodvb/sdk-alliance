@@ -2,6 +2,7 @@
 
 namespace Paynl\Alliance\Api;
 
+use Paynl\Alliance\Api\Exception\CompanyAlreadyRegisteredException;
 use Paynl\Error\Api as ApiError;
 use Paynl\Error\Error;
 use Paynl\Error\Required;
@@ -518,6 +519,12 @@ class AddMerchant extends Api
 
         // errors are returned different in this api
         if ($output['success'] != 1) {
+            // todo use some sort of error ids so we'll be able to check this
+            // properly
+            if (stripos($output['error_message'], 'Company already exists with cocNumber') !== false) {
+                throw new CompanyAlreadyRegisteredException($output['error_message']);
+            }
+
             throw new ApiError($output['error_field'].' - '.$output['error_message']);
         }
 

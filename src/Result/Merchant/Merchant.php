@@ -18,7 +18,7 @@ use Paynl\Result\Result;
 class Merchant extends Result
 {
     /**
-     * @return array
+     * @return string
      */
     public function getMerchantId()
     {
@@ -26,7 +26,7 @@ class Merchant extends Result
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getMerchantName()
     {
@@ -34,7 +34,7 @@ class Merchant extends Result
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getPackageType()
     {
@@ -42,7 +42,7 @@ class Merchant extends Result
     }
 
     /**
-     * @return array
+     * @return bool
      */
     public function getInvoiceAllowed()
     {
@@ -50,7 +50,7 @@ class Merchant extends Result
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getPayoutInterval()
     {
@@ -58,7 +58,7 @@ class Merchant extends Result
     }
 
     /**
-     * @return array
+     * @return string
      */
     public function getCreatedDate()
     {
@@ -66,7 +66,7 @@ class Merchant extends Result
     }
 
     /**
-     * @return array
+     * @return string|null
      */
     public function getAcceptedDate()
     {
@@ -74,7 +74,7 @@ class Merchant extends Result
     }
 
     /**
-     * @return array
+     * @return string|null
      */
     public function getDeletedDate()
     {

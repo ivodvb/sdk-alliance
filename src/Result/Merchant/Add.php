@@ -32,4 +32,12 @@ class Add extends Result
     {
         return $this->data['accountId'];
     }
+
+    /**
+     * @return string
+     */
+    public function getMerchantToken()
+    {
+        return $this->data['merchantToken'];
+    }
 }

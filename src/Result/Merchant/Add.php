@@ -18,10 +18,18 @@ use Paynl\Result\Result;
 class Add extends Result
 {
     /**
-     * @return array
+     * @return string
      */
     public function getMerchantId()
     {
         return $this->data['merchantId'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccountId()
+    {
+        return $this->data['accountId'];
     }
 }

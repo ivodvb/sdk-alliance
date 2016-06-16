@@ -92,6 +92,9 @@ class Merchant
         if (isset($options['cocNumber'])) {
             $api->setCocNumber($options['cocNumber']);
         }
+        if (isset($options['vatNumber'])) {
+            $api->setVatNumber($options['vatNumber']);
+        }
         if (isset($options['street'])) {
             $api->setStreet($options['street']);
         }

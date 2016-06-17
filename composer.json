@@ -11,6 +11,12 @@
   "require": {
     "paynl/sdk": "^1.1.5"
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:ivodvb/sdk"
+    }
+  ],
   "autoload":{
     "psr-4": {
       "Paynl\\Alliance\\": "src/"
